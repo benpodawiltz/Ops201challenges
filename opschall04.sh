@@ -8,7 +8,7 @@
 #1.Create four directories using the script.
 
 mkdir pod1 pod2 pod3 pod4
-}
+
 #2.Load each directory path into an array.
 function array () {
 my_dir=("pod1" "pod2" "pod3" "pod4")
