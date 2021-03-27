@@ -1,31 +1,47 @@
 #!/bin/bash
 # Script Name:              ops201-class04-opschall
 # Author:                   Ben Podawiltz
-# Date of last revision:    2.17.21
-# Description of purpose:   Bash array
+# Date:                     2.17.21
+# Revision:                 3.26.21
+# Purpose:                  Write a bash script that creates four dirctiories: dir1, dir2, dir3, dir4
+#                           Put the four directories into an array
+#                           References the array variable to create a new .txt file in each directory
 #
 #
-#1.Create four directories using the script.
+#
+#variables
+my_dir=("dir1" "dir2" "dir3" "dir4")
+my_path="$HOME/github/ops-201-challenges"
+my_files=("New1" "New2" "New3" "New4")
 
-mkdir pod1 pod2 pod3 pod4
 
-#2.Load each directory path into an array.
-function array () {
-my_dir=("pod1" "pod2" "pod3" "pod4")
-my_path="$HOME/github/gittest"
-my_files=1.txt
+#create 4 directories using a function
+function new_dir () {
+    for i in {1..4}
+    do 
+        command mkdir "dir$i"   #references the array in the loop
+        echo "${my_dir[*]}"
+    done
 }
 
-#3.Create a new .txt file by referencing the array instead of the literal filepath.
+#Call the function
+new_dir
 
- if ${my_dir[3]}
- then touch $my_files $my_path
- echo "it's all good"
- if $my_files 
- then $my_path
- fi
-fi 
+#Create a new .txt file by referencing the array instead of the literal filepath.
+function create_txtfiles () {
+    for i in {0..3}
+    do 
+        touch "${my_path}/${my_dir[$i]}/${my_files[$i]}.txt" #references two arrays and one variable while creating a .txt file(s)
+    done     
+}
+
+
+#Call the function
+create_txtfiles
 
 
 
+
+
+#End
 
